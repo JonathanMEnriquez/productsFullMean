@@ -22,7 +22,7 @@ export class EditComponent implements OnInit {
     imgUrl: ""
   };
 
-  errors: String = "";
+  errors: String[] = [];
 
   ngOnInit() {
     this._route.params.subscribe((params: Params) => this.thisId = params['id']);
@@ -52,11 +52,26 @@ export class EditComponent implements OnInit {
     observable.subscribe((responseData:any) => {
       console.log(responseData);
       if (responseData.errors) {
-        this.errors = responseData.errors.errors;
+        this.errorHandler(responseData.errors.errors);
       } else {
         console.log('successfully updated');
         this._router.navigate(['/products']);
       }
+    })
+  }
+
+  errorHandler(errorData) {
+    let keys = Object.keys(errorData);
+    keys.forEach((key) => {
+      let message = errorData[key].message;
+
+      if (errorData[key].properties && errorData[key].properties.message) {
+          message = errorData[key].properties.message.replace('`{PATH}`', key);
+      }
+
+      message = message.replace('Path ', '').replace(key,'').trim();
+      this.errors.push(key + " " + message);
+      console.log(this.errors);
     })
   }
 }

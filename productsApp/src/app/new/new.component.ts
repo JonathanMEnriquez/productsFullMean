@@ -16,8 +16,8 @@ export class NewComponent implements OnInit {
     price: "", 
     imgUrl: ""
   }
-
-  errors: any = "";
+  
+  errors: String[] = [];
 
   ngOnInit() {
     
@@ -28,8 +28,7 @@ export class NewComponent implements OnInit {
     let observable = this._apiService.createProduct(this.newProduct);
     observable.subscribe((responseData:any)=>{
       if (responseData.errors) {
-        console.log(this.errors);
-        this.errors = responseData.errors.errors;
+        this.errorHandler(responseData.errors.errors);
       } else {
         console.log(responseData);
         this._router.navigate(['/products']);
@@ -39,5 +38,20 @@ export class NewComponent implements OnInit {
 
   clearForm(){
     this._router.navigate(['/products']);
+  }
+
+  errorHandler(errorData) {
+    let keys = Object.keys(errorData);
+    keys.forEach((key) => {
+      let message = errorData[key].message;
+
+      if (errorData[key].properties && errorData[key].properties.message) {
+          message = errorData[key].properties.message.replace('`{PATH}`', key);
+      }
+
+      message = message.replace('Path ', '').replace(key,'').trim();
+      this.errors.push(key + " " + message);
+      console.log(this.errors);
+    })
   }
 }

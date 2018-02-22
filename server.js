@@ -53,7 +53,7 @@ app.post('/api/products', function(req, res) {
 })
 
 app.put('/api/products/:id', function(req, res) {
-    Product.update({_id: req.params.id}, { title: req.body.title, price: req.body.price, imgUrl: req.body.imgUrl }, function(err, product) {
+    Product.update({_id: req.params.id}, { title: req.body.title, price: req.body.price, imgUrl: req.body.imgUrl }, { runValidators: true }, function(err, product) {
         if (err) {
             console.log(err);
             res.json({ message: "Error", errors: err });
