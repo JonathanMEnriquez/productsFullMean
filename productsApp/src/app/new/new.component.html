@@ -1,0 +1,20 @@
+<div id="body">
+  <h1>Create a New Product</h1>
+  <form (submit)="addNewProduct()" >
+    <div id="errors" *ngIf="errors != '' " >
+      <p class="red">{{errors | json}}</p>
+    </div>
+    <div id="leftside">
+      <h2>Title</h2>
+      <h2>Price</h2>
+      <h2>Image url</h2>
+    </div>
+    <div id="rightside">
+      <input type="text" name="titleField" [(ngModel)]="newProduct.title" >
+      <input type="number" name="priceField" [(ngModel)]="newProduct.price" >
+      <input type="text" name="urlField" [(ngModel)]="newProduct.imgUrl" >
+      <input type="submit" value="Create">
+      <button (click)="clearForm()">Cancel</button>
+    </div>
+  </form>
+</div>
