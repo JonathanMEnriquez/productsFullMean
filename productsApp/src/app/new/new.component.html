@@ -1,4 +1,5 @@
 <div id="body">
+  <mat-card>
   <h1>Create a New Product</h1>
   <form (submit)="addNewProduct()" >
     <div *ngIf="errors.length > 0" >
@@ -6,17 +7,17 @@
         <p class="red">{{error}}</p>
       </div>
     </div>
-    <div id="leftside">
-      <h2>Title</h2>
-      <h2>Price</h2>
-      <h2>Image url</h2>
-    </div>
-    <div id="rightside">
-      <input type="text" name="titleField" [(ngModel)]="newProduct.title" >
-      <input type="number" name="priceField" [(ngModel)]="newProduct.price" >
-      <input type="text" name="urlField" [(ngModel)]="newProduct.imgUrl" >
-      <input type="submit" value="Create">
-      <button (click)="clearForm()">Cancel</button>
-    </div>
+    <mat-form-field>
+      <input matInput placeholder="Title" [(ngModel)]="newProduct.title">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Price" [(ngModel)]="newProduct.price">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Image url" [(ngModel)]="newProduct.imgUrl">
+    </mat-form-field>
+    <input type="submit" value="Create">
+    <button (click)="clearForm()">Cancel</button>
   </form>
+  </mat-card>
 </div>

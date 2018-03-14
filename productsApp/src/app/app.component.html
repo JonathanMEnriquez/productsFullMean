@@ -1,10 +1,13 @@
-<div id="container">
-  <h1>PPM - Project Product Management</h1>
+
+<mat-card class="header">
+  <h1><span class="name">PPM</span> - Project Product Management</h1>
+  <mat-divider></mat-divider>
+  <div class="divider"></div>
   <div id="navBar">
-    <a [routerLink]="['']" >Home</a>
-    <a [routerLink]="['/products']" >Product List</a>
-    <a [routerLink]="['/products/new']" >Product Creation</a>
+    <a mat-raised-button color="primary" [routerLink]="['']" >Home</a>
+    <a mat-raised-button color="primary" [routerLink]="['/products']" >Product List</a>
+    <a mat-raised-button color="primary" [routerLink]="['/products/new']" >Product Creation</a>
   </div>
-</div>
+</mat-card>
 
 <router-outlet></router-outlet>

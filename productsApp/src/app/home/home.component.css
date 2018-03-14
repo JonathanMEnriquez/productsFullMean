@@ -1,0 +1,14 @@
+#body {
+    background: linear-gradient(lightgray, white);
+    padding: 4vh;
+}
+
+#center {
+    border: 3px solid;
+    border-color: #3f51b5;
+    padding: 8vh;
+    background-color: white;
+    height: 30vh;
+    text-align: center;
+    font-size: 1.5em;
+}

@@ -10,6 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@angular/cdk": "^5.2.4",
+    "@angular/material": "^5.2.4",
     "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "mongoose": "^5.0.4"
